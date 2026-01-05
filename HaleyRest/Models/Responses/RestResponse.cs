@@ -32,7 +32,7 @@ namespace Haley.Models {
                 //}
                 return result;
             } catch (Exception ex) {
-                throw ex;
+                throw;
             }
         }
         public async Task<RestResponse<T>> FetchContent() {
@@ -73,7 +73,7 @@ namespace Haley.Models {
                 }
                 return this;
             } catch (Exception ex) {
-                throw ex;
+                throw;
             }
         }
 

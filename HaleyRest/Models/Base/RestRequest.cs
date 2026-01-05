@@ -292,8 +292,7 @@ namespace Haley.Models {
                     message = await Client.BaseClient.SendAsync(_request);
                 }
             } catch (Exception ex) {
-
-                throw ex;
+                throw;
             }
             return new BaseResponse(message);
         }
