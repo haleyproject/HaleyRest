@@ -6,6 +6,8 @@
     <AssemblyOriginatorKeyFile>HaleyProject.snk</AssemblyOriginatorKeyFile>
     <AssemblyName>Haley.Rest</AssemblyName>
     <RootNamespace>Haley.Rest</RootNamespace>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
     <Description>A Simple HttpClient Wrapper to handle Http Requests.</Description>
     <Company>TheHaleyProject</Company>
     <Authors>TheHaleyProject</Authors>
