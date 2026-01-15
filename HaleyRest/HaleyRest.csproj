@@ -6,12 +6,7 @@
     <AssemblyOriginatorKeyFile>HaleyProject.snk</AssemblyOriginatorKeyFile>
     <AssemblyName>Haley.Rest</AssemblyName>
     <RootNamespace>Haley.Rest</RootNamespace>
-    <LangVersion>10.0</LangVersion>
-    <Nullable>enable</Nullable>
     <Description>A Simple HttpClient Wrapper to handle Http Requests.</Description>
-    <Company>TheHaleyProject</Company>
-    <Authors>TheHaleyProject</Authors>
-    <Copyright>Haley 2020</Copyright>
     <PackageIcon>Haley.png</PackageIcon>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
