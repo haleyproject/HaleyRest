@@ -1,4 +1,6 @@
-﻿namespace Haley.Models {
+﻿using System;
+
+namespace Haley.Models {
     //FOLLOWS : https://www.rfc-editor.org/rfc/rfc5849
     public class OAuthToken {
         public string Key;
