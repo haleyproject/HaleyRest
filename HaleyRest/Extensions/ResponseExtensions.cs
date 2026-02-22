@@ -2,8 +2,10 @@
 using Haley.Models;
 using Haley.Rest;
 using System;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Haley.Abstractions;
 
 namespace Haley.Utils {
     public static class ResponseExtensions {
