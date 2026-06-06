@@ -14,8 +14,8 @@
     <Product>Haley Helpers</Product>
     <PackageId>Haley.Rest</PackageId>
     <Version>$(HaleyRestVersion)</Version>
-    <PackageProjectUrl>https://github.com/TheHaleyProject/HaleyRest</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/rmsmech/HaleyRest</RepositoryUrl>
+    <PackageProjectUrl>$(ProjectBaseUrl)Rest</PackageProjectUrl>
+    <RepositoryUrl>$(ProjectBaseUrl)Rest</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
 	  <IncludeSymbols>true</IncludeSymbols>
 	  <SymbolPackageFormat>snupkg</SymbolPackageFormat>
