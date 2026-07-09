@@ -26,7 +26,7 @@ namespace Haley.Models {
         Func<HttpRequestMessage, Task<bool>> _request_validation_cb;
         Uri _base_uri;
         bool _auto_authenticate = true;
-        HttpMessageHandler _handler = new HttpClientHandler();
+        HttpMessageHandler _handler = CreateDefaultHandler();
         #endregion
 
         #region Constructors
@@ -36,7 +36,7 @@ namespace Haley.Models {
             if (string.IsNullOrWhiteSpace(friendly_name)) friendly_name = base_address;
             FriendlyName = friendly_name;
             base.SetLogger(logger);
-            if (handler != null) _handler = handler;
+            _handler = PrepareHandler(handler);
             BaseClient = new HttpClient(_handler, false); //Base client is read only. So initiate only once.
 // NET5_0_OR_GREATER
 #if NET8_0_OR_GREATER
@@ -62,11 +62,40 @@ namespace Haley.Models {
                 //our client might already have the base address setup in the constructor.
                 //So fetch that first
                 var targetBaseAddress = BaseClient.BaseAddress;
+                EnableAutomaticDecompression(handler);
                 var newclient = new HttpClient(handler, disposehandler);
                 newclient.BaseAddress = targetBaseAddress;
                 BaseClient = newclient;
             }
             return this;
+        }
+
+        static HttpMessageHandler CreateDefaultHandler() {
+            var handler = new HttpClientHandler();
+            EnableAutomaticDecompression(handler);
+            return handler;
+        }
+
+        static HttpMessageHandler PrepareHandler(HttpMessageHandler handler) {
+            if (handler == null) return CreateDefaultHandler();
+            EnableAutomaticDecompression(handler);
+            return handler;
+        }
+
+        static void EnableAutomaticDecompression(HttpMessageHandler handler) {
+            try {
+                var methods = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+                if (handler is HttpClientHandler httpHandler && httpHandler.AutomaticDecompression == DecompressionMethods.None) {
+                    httpHandler.AutomaticDecompression = methods;
+                }
+#if NET8_0_OR_GREATER
+                if (handler is SocketsHttpHandler socketsHandler && socketsHandler.AutomaticDecompression == DecompressionMethods.None) {
+                    socketsHandler.AutomaticDecompression = methods;
+                }
+#endif
+            } catch (InvalidOperationException) {
+                // The handler was already used. Keep caller-provided handler behavior unchanged.
+            }
         }
 #endregion
 
