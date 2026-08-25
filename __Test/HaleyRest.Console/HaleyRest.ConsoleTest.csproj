@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -7,9 +7,9 @@
 
 	<Import Project="$(SolutionDir)ProjectReferences_$(SolutionName).txt" Condition="Exists('$(SolutionDir)ProjectReferences_$(SolutionName).txt')" />
 	<Choose>
-		<When Condition="Exists($(HaleyRest))">
+		<When Condition="Exists('$(HaleyRestProj)')">
 			<ItemGroup>
-				<ProjectReference Include="$(HaleyRest)\HaleyRest.csproj">
+				<ProjectReference Include="$(HaleyRestProj)">
 					<Name>HaleyRest</Name>
 				</ProjectReference>
 			</ItemGroup>
